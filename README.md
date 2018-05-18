@@ -1,16 +1,20 @@
 # lambda-exp
 
-FIXME: description
+AWS clojure lambda-exp
 
 ## Installation
 
-Download from http://example.com/FIXME.
+Fill in the required field in `create.sh`
+```
+./create.sh
+```
 
 ## Usage
 
-FIXME: explanation
+```
+./invoke.sh
+```
 
-    $ java -jar lambda-exp-0.1.0-standalone.jar [args]
 
 ## Options
 
@@ -32,5 +36,4 @@ FIXME: listing of options this app accepts.
 
 Copyright © 2018 FIXME
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the Eclipse Public License either version 1.0.
