@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform:
+- AWS::Serverless-2016-10-31
+
+Resources:
+  ClojureLambdaExp:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: "lambda-exp.core.lambdafn"
+      Runtime: java8
+      MemorySize: 512
+      Timeout: 15
+      FunctionName: "ClojureLambdaExp"
+      Description: "Laurence's sample clojure lambda deployed with cloudformation template"

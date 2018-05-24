@@ -15,25 +15,14 @@ Fill in the required field in `create.sh`
 ./invoke.sh
 ```
 
+### AWS CodeBuild
+use `ubuntu/java/openjdk-8` and `buildspec.yml` to build
 
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+### AWS CloudFormation
+use `template.yml` to deploy
 
 ## License
 
-Copyright © 2018 FIXME
+Copyright © 2018 Laurence Chen
 
 Distributed under the Eclipse Public License either version 1.0.

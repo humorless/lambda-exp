@@ -1,0 +1,33 @@
+version: 0.2
+
+env:
+  variables:
+    # This S3 bucket will be used to store the packaged Lambda deployment bundle.
+    S3_BUCKET: "laurence-dev"
+    ENVIRONMENT: "develop"
+
+phases:
+  install:
+    commands:
+      - cd ~; wget https://raw.github.com/technomancy/leiningen/stable/bin/lein; chmod +x lein; mv lein /bin
+      - LEIN_ROOT=true lein
+  build:
+    commands:
+      - echo Entering build phase...
+      - echo Build started on `date`
+      - echo $ENVIRONMENT
+      - cd $CODEBUILD_SRC_DIR
+      - LEIN_ROOT=true lein uberjar
+  post_build:
+    commands:
+      - echo Entering post_build phase..
+      - echo Build completed on `date`
+      - mv target/uberjar/lambda-exp-0.1.0-SNAPSHOT-standalone.jar .
+      - jar xf lambda-exp-0.1.0-SNAPSHOT-standalone.jar
+      - rm -rf target src buildspec.yml project.clj pom.xml lambda-exp-0.1.0-SNAPSHOT-standalone.jar
+      - aws cloudformation package --template template.yml --s3-bucket $S3_BUCKET --output-template template-export.json
+
+artifacts:
+  files:
+    - template-export.json
+  discard-paths: yes
